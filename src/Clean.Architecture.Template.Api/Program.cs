@@ -69,7 +69,7 @@ namespace Clean.Architecture.Template.Api
                     }
 
                     loggerConfiguration
-#if DEBUG
+#'if DEBUG'
                         .Enrich.WithProperty("Environment", "Local")
                         .WriteTo.Console()
 #else

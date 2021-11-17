@@ -1,0 +1,38 @@
+{
+    "$schema": "https://json.schemastore.org/template",
+    "author": "Taipan Prasithpongchai",
+    "classifications": [ "Web" ],
+    "identity": "Clean.Architecture.Template",
+    "sourceName": "Clean.Architecture.Template",
+    "name": "Clean architecture template",
+    "description": "Jason Taylor Clean architecture project structure template",
+    "shortName": "clean-architecture",
+    "tags": {
+        "language": "C#",
+        "type": "project"
+    },
+    "preferNameDirectory": true,
+    "symbols": {
+        "EnableSwaggerSupport": {
+            "type": "parameter",
+            "description": "Enable debug directive",
+            "datatype": "bool",
+            "defaultValue": "false"
+        }
+    },
+    "sources": [
+        {
+            "exclude": [
+                "**/[Bb]in/**",
+                "**/[Oo]bj/**",
+                ".template.config/**/*",
+                "**/*.filelist",
+                "**/*.user",
+                "**/*.lock.json",
+                "**/.git/**",
+                "**/.vs/**",
+                "**/logs/**"
+            ]
+        }
+    ]
+}
