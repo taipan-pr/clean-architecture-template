@@ -113,10 +113,10 @@ namespace Clean.Architecture.Template.Api.Middlewares
                     .Error(ex, "Finished Exception: [{Method}] {Controller}.{Action} - {Elapsed}", context.Request.Method, controller, action, stopwatch.Elapsed);
                 context.Response.ContentType = "application/json";
                 context.Response.StatusCode = (int)HttpStatusCode.InternalServerError;
-                // TODO: #if DEBUG
+#if DEBUG
                 var json = JsonSerializer.Serialize(exceptionResponse);
                 await context.Response.WriteAsync(json);
-                // #endif
+#endif
             }
         }
 

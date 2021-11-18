@@ -69,12 +69,12 @@ namespace Clean.Architecture.Template.Api
                     }
 
                     loggerConfiguration
-                        // TODO: #if DEBUG
+#if DEBUG
                         .Enrich.WithProperty("Environment", "Local")
                         .WriteTo.Console()
-                        // #else
+#else
                         .Enrich.WithProperty("Environment", context.Configuration["ASPNETCORE_ENVIRONMENT"])
-                        // #endif
+#endif
                         .Enrich.FromLogContext()
                         .Enrich.WithEnvironmentUserName()
                         .Enrich.WithMachineName()
