@@ -18,6 +18,12 @@
             "description": "Include docker file",
             "datatype": "bool",
             "defaultValue": "false"
+        },
+        "EnableGithubAction": {
+            "type": "parameter",
+            "description": "Include github action files",
+            "datatype": "bool",
+            "defaultValue": "false"
         }
     },
     "sources": [
@@ -27,6 +33,13 @@
                     "condition": "(EnableDockerSupport)",
                     "include": [
                         "Dockerfile"
+                    ]
+                },
+                {
+                    "condition": "(EnableGithubAction)",
+                    "include": [
+                        ".github/workflows/main.yml",
+                        ".github/workflows/pull-request.yml"
                     ]
                 }
             ],

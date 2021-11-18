@@ -68,13 +68,20 @@ namespace Clean.Architecture.Template.Api
                                 apiKey: context.Configuration["Seq:ApiKey"]);
                     }
 
+                    switch (context.Configuration["Serilog:Properties:Environment"])
+                    {
+                        case "Local":
+                            loggerConfiguration
+                                .Enrich.WithProperty("Environment", "Local")
+                                .WriteTo.Console();
+                            break;
+                        default:
+                            loggerConfiguration
+                                .Enrich.WithProperty("Environment", context.Configuration["ASPNETCORE_ENVIRONMENT"]);
+                            break;
+                    }
+
                     loggerConfiguration
-#if DEBUG
-                        .Enrich.WithProperty("Environment", "Local")
-                        .WriteTo.Console()
-#else
-                        .Enrich.WithProperty("Environment", context.Configuration["ASPNETCORE_ENVIRONMENT"])
-#endif
                         .Enrich.FromLogContext()
                         .Enrich.WithEnvironmentUserName()
                         .Enrich.WithMachineName()

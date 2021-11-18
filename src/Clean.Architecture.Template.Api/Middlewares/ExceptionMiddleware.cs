@@ -2,6 +2,8 @@
 using FluentValidation;
 using Microsoft.AspNetCore.Http;
 using Microsoft.AspNetCore.Routing;
+using Microsoft.Extensions.Configuration;
+using Microsoft.Extensions.Primitives;
 using Serilog;
 using Serilog.Context;
 using System;
@@ -19,10 +21,12 @@ namespace Clean.Architecture.Template.Api.Middlewares
     {
         private readonly RequestDelegate _next;
         private readonly ILogger _logger;
+        private readonly IConfiguration _configuration;
 
-        public ExceptionMiddleware(RequestDelegate next, ILogger logger)
+        public ExceptionMiddleware(RequestDelegate next, ILogger logger, IConfiguration configuration)
         {
             _logger = logger;
+            _configuration = configuration;
             _next = next;
         }
 
@@ -52,14 +56,16 @@ namespace Clean.Architecture.Template.Api.Middlewares
                     action);
 
                 context.Response.Body = response;
+                context.Response.Headers.Add("x-environment", new StringValues(_configuration["Serilog:Properties:Environment"]));
+                context.Response.Headers.Add("x-release", new StringValues(_configuration["Serilog:Properties:Environment"]));
                 await _next(context);
                 stopwatch.Stop();
-
                 response.Seek(0, SeekOrigin.Begin);
                 var responseJson = await new StreamReader(context.Response.Body).ReadToEndAsync();
                 response.Seek(0, SeekOrigin.Begin);
                 await response.CopyToAsync(originalBody);
-                if (!string.IsNullOrWhiteSpace(context.Request.ContentType) && context.Request.ContentType.Contains("multipart/form-data"))
+                if (!string.IsNullOrWhiteSpace(context.Request.ContentType) &&
+                    context.Request.ContentType.Contains("multipart/form-data"))
                 {
                     _logger
                         .Information("Finished: [{Method}] {Controller}.{Action} - {Elapsed}", context.Request.Method,
@@ -83,7 +89,8 @@ namespace Clean.Architecture.Template.Api.Middlewares
                     details = ex.Errors.Select(e => e.ErrorMessage)
                 };
                 _logger
-                    .Warning(ex, "Finished ValidationException: [{Method}] {Controller}.{Action} - {Elapsed}", context.Request.Method, controller, action, stopwatch.Elapsed);
+                    .Warning(ex, "Finished ValidationException: [{Method}] {Controller}.{Action} - {Elapsed}",
+                        context.Request.Method, controller, action, stopwatch.Elapsed);
                 context.Response.ContentType = "application/json";
                 context.Response.StatusCode = (int)HttpStatusCode.BadRequest;
                 var json = JsonSerializer.Serialize(exceptionResponse);
@@ -98,7 +105,8 @@ namespace Clean.Architecture.Template.Api.Middlewares
                     message = ex.Message
                 };
                 _logger
-                    .Warning(ex, "Finished {ExceptionType}: [{Method}] {Controller}.{Action} - {Elapsed}", ex.GetType().Name, context.Request.Method, controller, action, stopwatch.Elapsed);
+                    .Warning(ex, "Finished {ExceptionType}: [{Method}] {Controller}.{Action} - {Elapsed}",
+                        ex.GetType().Name, context.Request.Method, controller, action, stopwatch.Elapsed);
                 context.Response.ContentType = "application/json";
                 context.Response.StatusCode = (int)HttpStatusCode.BadRequest;
                 var json = JsonSerializer.Serialize(exceptionResponse);
@@ -110,13 +118,17 @@ namespace Clean.Architecture.Template.Api.Middlewares
                 context.Response.Body = originalBody;
                 var exceptionResponse = new { message = ex.Message };
                 _logger
-                    .Error(ex, "Finished Exception: [{Method}] {Controller}.{Action} - {Elapsed}", context.Request.Method, controller, action, stopwatch.Elapsed);
+                    .Error(ex, "Finished Exception: [{Method}] {Controller}.{Action} - {Elapsed}",
+                        context.Request.Method, controller, action, stopwatch.Elapsed);
                 context.Response.ContentType = "application/json";
                 context.Response.StatusCode = (int)HttpStatusCode.InternalServerError;
-#if DEBUG
-                var json = JsonSerializer.Serialize(exceptionResponse);
-                await context.Response.WriteAsync(json);
-#endif
+
+                if (_configuration["Serilog:Properties:Environment"] == "Local" ||
+                    _configuration["Serilog:Properties:Environment"] == "Development")
+                {
+                    var json = JsonSerializer.Serialize(exceptionResponse);
+                    await context.Response.WriteAsync(json);
+                }
             }
         }
 
