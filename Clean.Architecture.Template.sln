@@ -7,21 +7,21 @@ Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "src", "src", "{D71ABAB1-9B3
 EndProject
 Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "tests", "tests", "{D0448402-32A7-44BB-9E1C-2CCDC14C0789}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Clean.Architecture.Template.Api", "src\Clean.Architecture.Template.Api\Clean.Architecture.Template.Api.csproj", "{04731BBC-8E26-4C4B-9AB0-F10A4E36C8FE}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "Clean.Architecture.Template.Api", "src\Clean.Architecture.Template.Api\Clean.Architecture.Template.Api.csproj", "{04731BBC-8E26-4C4B-9AB0-F10A4E36C8FE}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Clean.Architecture.Template.Api.UnitTests", "tests\Clean.Architecture.Template.Api.UnitTests\Clean.Architecture.Template.Api.UnitTests.csproj", "{285EEAD2-29E9-4181-A953-BDF875442530}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "Clean.Architecture.Template.Api.UnitTests", "tests\Clean.Architecture.Template.Api.UnitTests\Clean.Architecture.Template.Api.UnitTests.csproj", "{285EEAD2-29E9-4181-A953-BDF875442530}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Clean.Architecture.Template.Application", "src\Clean.Architecture.Template.Application\Clean.Architecture.Template.Application.csproj", "{AC6B609E-7E20-4D35-8124-4EE73C45139E}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "Clean.Architecture.Template.Application", "src\Clean.Architecture.Template.Application\Clean.Architecture.Template.Application.csproj", "{AC6B609E-7E20-4D35-8124-4EE73C45139E}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Clean.Architecture.Template.Domain", "src\Clean.Architecture.Template.Domain\Clean.Architecture.Template.Domain.csproj", "{66EFEFB2-04C2-4B00-BCAE-03AE53B90068}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "Clean.Architecture.Template.Domain", "src\Clean.Architecture.Template.Domain\Clean.Architecture.Template.Domain.csproj", "{66EFEFB2-04C2-4B00-BCAE-03AE53B90068}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Clean.Architecture.Template.Infrastructure", "src\Clean.Architecture.Template.Infrastructure\Clean.Architecture.Template.Infrastructure.csproj", "{CB9E6B20-12DE-47AB-B5D6-7F0FBB4092EA}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "Clean.Architecture.Template.Infrastructure", "src\Clean.Architecture.Template.Infrastructure\Clean.Architecture.Template.Infrastructure.csproj", "{CB9E6B20-12DE-47AB-B5D6-7F0FBB4092EA}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Clean.Architecture.Template.Application.UnitTests", "tests\Clean.Architecture.Template.Application.UnitTests\Clean.Architecture.Template.Application.UnitTests.csproj", "{A0029267-2707-4E86-A6FC-B532E076C8A6}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "Clean.Architecture.Template.Application.UnitTests", "tests\Clean.Architecture.Template.Application.UnitTests\Clean.Architecture.Template.Application.UnitTests.csproj", "{A0029267-2707-4E86-A6FC-B532E076C8A6}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Clean.Architecture.Template.Domain.UnitTests", "tests\Clean.Architecture.Template.Domain.UnitTests\Clean.Architecture.Template.Domain.UnitTests.csproj", "{7B81544B-E961-4FC1-91F2-C4F39A9422F1}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "Clean.Architecture.Template.Domain.UnitTests", "tests\Clean.Architecture.Template.Domain.UnitTests\Clean.Architecture.Template.Domain.UnitTests.csproj", "{7B81544B-E961-4FC1-91F2-C4F39A9422F1}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Clean.Architecture.Template.Infrastructure.UnitTests", "tests\Clean.Architecture.Template.Infrastructure.UnitTests\Clean.Architecture.Template.Infrastructure.UnitTests.csproj", "{F4AB9C1F-2A3F-42B6-9BF4-C96B5B60DEEE}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "Clean.Architecture.Template.Infrastructure.UnitTests", "tests\Clean.Architecture.Template.Infrastructure.UnitTests\Clean.Architecture.Template.Infrastructure.UnitTests.csproj", "{F4AB9C1F-2A3F-42B6-9BF4-C96B5B60DEEE}"
 EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution

@@ -13,15 +13,23 @@
     },
     "preferNameDirectory": true,
     "symbols": {
-        "EnableSwaggerSupport": {
+        "EnableDockerSupport": {
             "type": "parameter",
-            "description": "Enable debug directive",
+            "description": "Enable docker support",
             "datatype": "bool",
             "defaultValue": "false"
         }
     },
     "sources": [
         {
+            "modifiers": [
+                {
+                    "condition": "(EnableDockerSupport)",
+                    "include": [
+                        "Dockerfile"
+                    ]
+                }
+            ],
             "exclude": [
                 "**/[Bb]in/**",
                 "**/[Oo]bj/**",
