@@ -45,3 +45,38 @@ jobs:
           app-name: ${{ secrets.AZURE_WEBAPP_NAME }}
           publish-profile: ${{ secrets.AZURE_WEBAPP_PUBLISH_PROFILE }}
           package: 'Clean.Architecture.Template.Api/Release' 
+          
+  Staging:
+
+    runs-on: ubuntu-latest
+    environment: Staging
+    
+    steps:
+      - uses: actions/checkout@v2
+      
+      - name: Setup .NET Core SDK ${{ matrix.dotnet-version }}
+        uses: actions/setup-dotnet@v1.7.2
+        with:
+          dotnet-version: '5.0.x'
+      
+      - name: Install dependencies
+        run: dotnet restore
+      
+      - name: Build
+        run: dotnet build --configuration Release --no-restore
+      
+      - name: Test
+        run: dotnet test --no-restore --verbosity normal
+        
+      - name: Publish
+        run: |
+          dotnet restore ./src/Clean.Architecture.Template.Api/Clean.Architecture.Template.Api.csproj
+          dotnet build ./src/Clean.Architecture.Template.Api/Clean.Architecture.Template.Api.csproj --configuration Release
+          dotnet publish ./src/Clean.Architecture.Template.Api/Clean.Architecture.Template.Api.csproj -c Release -o 'Clean.Architecture.Template.Api/Release'
+
+      - name: Azure WebApp
+        uses: Azure/webapps-deploy@v2
+        with:
+          app-name: ${{ secrets.AZURE_WEBAPP_NAME }}
+          publish-profile: ${{ secrets.AZURE_WEBAPP_PUBLISH_PROFILE }}
+          package: 'Clean.Architecture.Template.Api/Release' 
