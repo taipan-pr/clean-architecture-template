@@ -15,7 +15,7 @@
     "symbols": {
         "EnableDockerSupport": {
             "type": "parameter",
-            "description": "Enable docker support",
+            "description": "Include docker file",
             "datatype": "bool",
             "defaultValue": "false"
         }
