@@ -12,7 +12,7 @@ on:
       - main
 
 jobs:
-  Development:
+  Pull Request:
 
     runs-on: ubuntu-latest
     environment: Development
