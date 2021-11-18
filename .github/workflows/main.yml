@@ -75,7 +75,7 @@ jobs:
   Production:
     needs: [ Staging ]
     runs-on: ubuntu-latest
-    environment: Staging
+    environment: Production
     
     steps:
       - uses: actions/checkout@v2
