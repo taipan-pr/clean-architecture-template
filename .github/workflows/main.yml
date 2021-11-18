@@ -14,7 +14,8 @@ jobs:
   build:
 
     runs-on: ubuntu-latest
-
+    environment: Development
+    
     steps:
       - uses: actions/checkout@v2
       
@@ -31,3 +32,16 @@ jobs:
       
       - name: Test
         run: dotnet test --no-restore --verbosity normal
+        
+      - name: Publish
+        run: |
+          dotnet restore
+          dotnet build --configuration Release
+          dotnet publish -c Release -o 'Clean.Architecture.Template.Api/Release'
+
+      - name: Azure WebApp
+        uses: Azure/webapps-deploy@v2
+        with:
+          app-name: ${{ env.AZURE_WEBAPP_NAME }}
+          publish-profile: ${{ secrets.AZURE_WEBAPP_PUBLISH_PROFILE }}
+          package: 'Clean.Architecture.Template.Api/Release' 
