@@ -123,8 +123,7 @@ namespace Clean.Architecture.Template.Api.Middlewares
                 context.Response.ContentType = "application/json";
                 context.Response.StatusCode = (int)HttpStatusCode.InternalServerError;
 
-                if (_configuration["Serilog:Properties:Environment"] == "Local" ||
-                    _configuration["Serilog:Properties:Environment"] == "Development")
+                if (_configuration["ASPNETCORE_ENVIRONMENT"] == "Development")
                 {
                     var json = JsonSerializer.Serialize(exceptionResponse);
                     await context.Response.WriteAsync(json);
