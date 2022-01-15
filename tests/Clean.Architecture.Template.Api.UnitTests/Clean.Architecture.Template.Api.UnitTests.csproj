@@ -17,7 +17,7 @@
   </ItemGroup>
 
   <ItemGroup>
-    <ProjectReference Include="..\..\src\Clean.Architecture.Template.Api\Clean.Architecture.Template.Api.csproj" />
+    <ProjectReference Include="..\..\src\Clean.Architecture.Template\Clean.Architecture.Template.csproj" />
   </ItemGroup>
 
 </Project>
