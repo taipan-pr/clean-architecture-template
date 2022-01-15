@@ -4,7 +4,7 @@ using Microsoft.AspNetCore.Mvc;
 using Serilog;
 using System.Threading.Tasks;
 
-namespace Clean.Architecture.Template.Api.Controllers.V1_0
+namespace Clean.Architecture.Template.Controllers.V1_0
 {
     [ApiController]
     [Route("{version:apiVersion}/[controller]")]

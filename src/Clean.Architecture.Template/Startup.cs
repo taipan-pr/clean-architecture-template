@@ -1,9 +1,9 @@
 using Autofac;
 using Autofac.Extensions.DependencyInjection;
-using Clean.Architecture.Template.Api.Middlewares;
-using Clean.Architecture.Template.Api.SwaggerConfigs;
 using Clean.Architecture.Template.Application;
 using Clean.Architecture.Template.Infrastructure;
+using Clean.Architecture.Template.Middlewares;
+using Clean.Architecture.Template.SwaggerConfigs;
 using Microsoft.AspNetCore.Builder;
 using Microsoft.AspNetCore.Hosting;
 using Microsoft.AspNetCore.Mvc;
@@ -21,7 +21,7 @@ using System.Text.Encodings.Web;
 using System.Text.Json;
 using System.Text.Json.Serialization;
 
-namespace Clean.Architecture.Template.Api
+namespace Clean.Architecture.Template
 {
     public class Startup
     {

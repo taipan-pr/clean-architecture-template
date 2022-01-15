@@ -2,7 +2,7 @@
 using System.Reflection;
 using Module = Autofac.Module;
 
-namespace Clean.Architecture.Template.Api
+namespace Clean.Architecture.Template
 {
     public class AutofacModule : Module
     {

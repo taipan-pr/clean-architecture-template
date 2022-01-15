@@ -1,6 +1,6 @@
 using System;
 
-namespace Clean.Architecture.Template.Api
+namespace Clean.Architecture.Template
 {
     public class WeatherForecast
     {

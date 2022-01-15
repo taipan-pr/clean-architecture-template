@@ -7,7 +7,7 @@ using Serilog;
 using Serilog.Exceptions;
 using System;
 
-namespace Clean.Architecture.Template.Api
+namespace Clean.Architecture.Template
 {
     public class Program
     {

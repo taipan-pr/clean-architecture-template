@@ -7,7 +7,7 @@ using System.Threading.Tasks;
 
 namespace Clean.Architecture.Template.Application.PipelineBehaviors
 {
-    public class LoggingBehaviour<TRequest, TResponse> : IPipelineBehavior<TRequest, TResponse>
+    public class LoggingBehaviour<TRequest, TResponse> : IPipelineBehavior<TRequest, TResponse> where TRequest : IRequest<TResponse>
     {
         private readonly ILogger _logger;
 

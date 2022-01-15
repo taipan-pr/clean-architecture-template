@@ -4,7 +4,7 @@ using Swashbuckle.AspNetCore.SwaggerGen;
 using System.Linq;
 using System.Text.Json;
 
-namespace Clean.Architecture.Template.Api.SwaggerConfigs
+namespace Clean.Architecture.Template.SwaggerConfigs
 {
     /// <summary>
     /// Represents the Swagger/Swashbuckle operation filter used to document the implicit API version parameter.

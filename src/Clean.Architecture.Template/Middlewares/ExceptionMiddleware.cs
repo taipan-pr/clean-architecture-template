@@ -15,7 +15,7 @@ using System.Text;
 using System.Threading.Tasks;
 using JsonSerializer = System.Text.Json.JsonSerializer;
 
-namespace Clean.Architecture.Template.Api.Middlewares
+namespace Clean.Architecture.Template.Middlewares
 {
     public class ExceptionMiddleware
     {

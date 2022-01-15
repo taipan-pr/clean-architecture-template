@@ -1,6 +1,6 @@
 ﻿using Microsoft.AspNetCore.Mvc.Versioning;
 
-namespace Clean.Architecture.Template.Api.SwaggerConfigs
+namespace Clean.Architecture.Template.SwaggerConfigs
 {
     public class UnsupportedApiVersion : DefaultErrorResponseProvider
     {
